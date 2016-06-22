@@ -1,0 +1,43 @@
+<div id="header">
+  <h1> Yeng's Forum </h1>  
+</div>
+
+<div class="container topic-group">
+
+  <div class="row">
+    <p>
+      <%= link_to "New Topic", new_topic_path, :class => "btn btn-primary" %>
+    </p>
+    
+    <table class="table table-hover">
+        <tr class="info">
+          <th>
+            Topic Name
+          </th>
+          <th>
+            Function
+          </th>
+          <th>
+            Created Time
+          </th>
+        </tr>
+      <% @topics.each do |topic| %>
+        <tr>
+          <td>
+            <%= link_to topic.name, topic_path(topic), :class => "btn btn-default" %>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            <%= topic.created_at.to_s.split[0]  %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+
+  </div>
+
+
+</div>
+

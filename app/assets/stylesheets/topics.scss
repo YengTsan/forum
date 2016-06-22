@@ -1,0 +1,31 @@
+// Place all the styles related to the topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#flash {
+  background-color: #191970;
+  color: #fff;
+}
+
+
+#header {
+  margin: 0px;
+  background-color: #191970;
+  height: 150px;
+  color: #fff;
+}
+
+#header h1{
+  padding-top: 60px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.topic-group {
+  margin-top: 30px;
+}
+
+h1 {
+  text-align: center;
+}
+
