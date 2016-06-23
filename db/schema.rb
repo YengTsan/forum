@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623081838) do
+ActiveRecord::Schema.define(version: 20160623144610) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160623081838) do
     t.integer  "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "topic_category_ships", force: :cascade do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160623081838) do
     t.integer  "view_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,7 +2,9 @@ class CommentsController < ApplicationController
   before_action :set_topic
 
   def create
-    @comment = @topic.comments.create( comment_params )
+    @comment = @topic.comments.new( comment_params )
+    @comment.user = current_user
+    @comment.save
 
     if @comment.valid?
       redirect_to :back
@@ -20,7 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require( :comment ).permit( :content )
+    params.require( :comment ).permit( :content, :user_id )
   end
 
 end

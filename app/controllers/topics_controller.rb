@@ -1,10 +1,16 @@
 class TopicsController < ApplicationController
 
   def index
-    @topics = Topic.all unless params[ :order ]
-    @topics = Topic.sorted_by_lasted_updated if params[ :order ] == "last_time"
-    @topics = Topic.sorted_by_number_of_comments if params[ :order ] == "num_of_comments"
-    @topics = Topic.sorted_by_topic_capital if params[ :order ] == "capital"
+    case params[ :order ]
+    when "last_time"
+      @topics = Topic.sorted_by_lasted_updated 
+    when "num_of_comments"
+      @topics = Topic.sorted_by_number_of_comments
+    when "capital"
+      @topics = Topic.sorted_by_topic_capital
+    else
+      @topics = Topic.all
+    end
   end
 
   def new
@@ -13,6 +19,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new( topic_params )
+    @topic.user = current_user
     @topic.save
 
     redirect_to topics_path
@@ -25,13 +32,17 @@ class TopicsController < ApplicationController
   end
 
   def about
-    
+  end
+
+  def user_profile
+    @topics = current_user.topics
+    @comments = current_user.comments
   end
 
   protected
 
   def topic_params
-    params.require( :topic ).permit( :name, :content, :category_ids => [] )
+    params.require( :topic ).permit( :name, :content, :user_id , :category_ids => [])
   end
 
 end

@@ -6,6 +6,8 @@ class Topic < ActiveRecord::Base
   has_many :topic_category_ships
   has_many :categories, :through => :topic_category_ships
 
+  belongs_to :user
+
   def self.sorted_by_lasted_updated
     @topics = Topic.all.sort_by do |t|
       t.comments.exists? ? t.comments.last.updated_at : t.updated_at
@@ -15,7 +17,7 @@ class Topic < ActiveRecord::Base
 
   def self.sorted_by_number_of_comments
     @topics = Topic.all.sort_by do | topic |
-      Comment.count_by_topic_id(topic.id)
+      Comment.count_by_topic_id( topic.id )
     end
     @topics.reverse
   end

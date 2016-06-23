@@ -1,0 +1,61 @@
+
+  <h1>
+    Topic Content
+  </h1>
+
+  <% @topics.each do |topic| %>
+
+    <table class="table">
+      <tr>
+        <th>
+          Topic name
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <%= topic.name %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          Content
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <%= topic.content %>
+        </td>
+      </tr>
+    </table>
+  
+  <% end %>
+
+  <h1>
+    
+  </h1>
+
+  <table class="table">
+
+    <tr>
+      <th>
+        Topic Name
+      </th>
+      <th>
+        Content
+      </th>
+    </tr>
+
+    <% @comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= comment.topic.name %>
+        </td>
+        <td>
+          <%= comment.content %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+
