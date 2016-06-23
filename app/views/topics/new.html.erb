@@ -15,6 +15,10 @@
     <%= f.label :content, "Content: "%>
     <%= f.text_area :content ,:class => "form-control" %>
   </div>
+  
+  <div class="form-group">
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
+  </div>
 
     <%= f.submit "Create", :class => "btn btn-primary" %>
     <%= link_to "Cancel", topics_path ,:class => "btn btn-default" %>

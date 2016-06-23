@@ -1,0 +1,39 @@
+
+
+  <table class="table">
+    <tr>
+      <th>
+        全站使用者數量
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <%= User.all.count %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>
+        主題數量
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <%= Topic.all.count %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>
+        回覆數量
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <%= Comment.all.count %>
+      </td>
+    </tr>
+
+  </table>
+
+  <%= link_to "回到首頁" , topics_path, :class => "btn btn-primary" %>

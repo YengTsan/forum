@@ -3,7 +3,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @topic.comments.create( comment_params )
-    redirect_to :back
+
+    if @comment.valid?
+      redirect_to :back
+    else
+      flash[:alert] = "Comments cann't be blank"
+      redirect_to :back
+    end
+
   end
 
   protected

@@ -10,6 +10,9 @@
 
 <div class="head-nav">
   <div class="container">
+
+    <%= link_to '關於全站', about_topics_path, :class => "btn btn-default" %>
+
     <% if current_user %>
       <%= link_to '修改資料', edit_registration_path(:user), :class => "btn btn-default pull-right nav-btn" %>
       <%= link_to '登出', destroy_user_session_path, :method => :delete, :class => "btn btn-danger pull-right nav-btn" %> 
@@ -19,7 +22,7 @@
     <% end %>
   </div>
 
-  <div class="contianer flash">
+  <div class="container flash">
     <% if notice %>
       <p class="notice"><%= notice %></p>
     <% end %>

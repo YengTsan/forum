@@ -43,16 +43,18 @@
     </table>
   <% end %>
 
+  <div id="comment-form">
+    <%= form_for @comment, :url => topic_comments_path( @topic ) do |f| %>
 
-  <%= form_for @comment, :url => topic_comments_path( @topic ) do |f| %>
+    <div class="form-group">
+      <%= f.label :content, "Content: "%>
+      <%= f.text_area :content ,:class => "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :content, "Content: "%>
-    <%= f.text_area :content ,:class => "form-control" %>
+      <%= f.submit "Create", :class => "btn btn-default" %>
+      <%= link_to "Back to forum", topics_path, :class => "btn btn-primary" %>
+    <% end %>
   </div>
 
-    <%= f.submit "Create", :class => "btn btn-default" %>
-    <%= link_to "Back to forum", topics_path, :class => "btn btn-primary" %>
-  <% end %>
-
 </div>
+

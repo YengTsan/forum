@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
     @topics = Topic.all unless params[ :order ]
     @topics = Topic.sorted_by_lasted_updated if params[ :order ] == "last_time"
     @topics = Topic.sorted_by_number_of_comments if params[ :order ] == "num_of_comments"
+    @topics = Topic.sorted_by_topic_capital if params[ :order ] == "capital"
   end
 
   def new
@@ -23,10 +24,14 @@ class TopicsController < ApplicationController
     @comment = Comment.new # 可以在這個頁面直接創造一個新的comment
   end
 
+  def about
+    
+  end
+
   protected
 
   def topic_params
-    params.require( :topic ).permit( :name, :content )
+    params.require( :topic ).permit( :name, :content, :category_ids => [] )
   end
 
 end
