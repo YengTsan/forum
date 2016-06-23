@@ -16,7 +16,7 @@
     <%= f.text_area :content ,:class => "form-control" %>
   </div>
 
-    <%= f.submit "Create", :class => "btn btn default" %>
-
+    <%= f.submit "Create", :class => "btn btn-primary" %>
+    <%= link_to "Cancel", topics_path ,:class => "btn btn-default" %>
   <% end %>
 </div>

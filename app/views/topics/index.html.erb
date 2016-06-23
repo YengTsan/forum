@@ -1,16 +1,17 @@
-<div id="header">
-  <h1> Yeng's Forum </h1>  
-</div>
-
 <div class="container topic-group">
 
   <div class="row">
     <p>
       <%= link_to "New Topic", new_topic_path, :class => "btn btn-primary" %>
+      <%= link_to "排序：最後回覆時間", topics_path( :order => "last_time"), :class => "btn btn-success" %>
+      <%= link_to "排序：回復數量", topics_path( :order => "num_of_comments"), :class => "btn btn-success" %>
     </p>
     
     <table class="table table-hover">
         <tr class="info">
+          <th>
+            Num
+          </th>
           <th>
             Topic Name
           </th>
@@ -18,11 +19,14 @@
             Function
           </th>
           <th>
-            Created Time
+            Created Date
           </th>
         </tr>
       <% @topics.each do |topic| %>
         <tr>
+          <td>
+            <%= Comment.count_by_topic_id(topic.id).to_s + " comments"  %>
+          </td>
           <td>
             <%= link_to topic.name, topic_path(topic), :class => "btn btn-default" %>
           </td>

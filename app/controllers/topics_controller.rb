@@ -1,7 +1,9 @@
 class TopicsController < ApplicationController
 
   def index
-    @topics = Topic.all
+    @topics = Topic.all unless params[ :order ]
+    @topics = Topic.sorted_by_lasted_updated if params[ :order ] == "last_time"
+    @topics = Topic.sorted_by_number_of_comments if params[ :order ] == "num_of_comments"
   end
 
   def new
@@ -17,6 +19,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find( params[:id] )
+    @comments = Comment.find_comments_by_topic_id( params[:id] ) # 可以撈到這篇文章所有comments
+    @comment = Comment.new # 可以在這個頁面直接創造一個新的comment
   end
 
   protected

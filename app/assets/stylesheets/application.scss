@@ -16,3 +16,49 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+/* 全域*/
+
+h1 {
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+/* header*/
+
+.head-nav {
+  background-color: #191970;
+  color: #fff;
+  padding-top: 10px;
+}
+
+#header {
+  margin: 0px;
+  background-color: #191970;
+  height: 100px;
+  color: #fff;
+}
+
+#header h1{
+  padding-top: 27px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.nav-btn {
+  margin-left: 10px;
+}
+
+/**/
+
+.topic-group {
+  margin-top: 30px;
+}
+
+
+
+
