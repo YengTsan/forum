@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623144610) do
+ActiveRecord::Schema.define(version: 20160626061722) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -58,6 +58,10 @@ ActiveRecord::Schema.define(version: 20160623144610) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "head_shot_file_name"
+    t.string   "head_shot_content_type"
+    t.integer  "head_shot_file_size"
+    t.datetime "head_shot_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

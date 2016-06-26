@@ -37,6 +37,13 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :head_shot%> <br>
+    <%= f.file_field :head_shot %>
+  </div>
+
+  <br>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
