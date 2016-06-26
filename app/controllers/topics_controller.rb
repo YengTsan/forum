@@ -48,7 +48,7 @@ class TopicsController < ApplicationController
   protected
 
   def topic_params
-    params.require( :topic ).permit( :name, :content, :user_id , :category_ids => [])
+    params.require( :topic ).permit( :name, :content, :user_id , { :category_ids => [] }, :pic)
   end
 
 end

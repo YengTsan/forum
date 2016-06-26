@@ -41,7 +41,6 @@ class User < ActiveRecord::Base
      user.email = auth.info.email
      user.password = Devise.friendly_token[0,20]
      user.name = user.email.split("@").first
-     byebug
      #user.fb_raw_data = auth
      user.save!
      return user

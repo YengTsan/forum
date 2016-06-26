@@ -23,6 +23,10 @@
     <tr>
       <td>
         <%= @topic.content %>
+        <br>
+        <% if @topic.pic.exists? %>
+          <%= image_tag( @topic.pic(:thumb) ) %>
+        <% end %>
       </td>
     </tr>
   </table>
@@ -37,6 +41,10 @@
         <tr>
           <td>
             <%= comment.content %>
+            <br>
+            <% if comment.pic.exists? %>
+              <%= image_tag( comment.pic(:thumb) ) %>
+            <% end %>
           </td>
         </tr>
       <% end %>
@@ -50,9 +58,15 @@
       <%= f.label :content, "Content: "%>
       <%= f.text_area :content ,:class => "form-control" %>
     </div>
+    <div class="form-group">
+      <%= f.label :pic, "圖片" %>
+      <%= f.file_field :pic %>
+
+    </div>
 
       <%= f.submit "Create", :class => "btn btn-default" %>
       <%= link_to "Back to forum", topics_path, :class => "btn btn-primary" %>
+
     <% end %>
   </div>
 

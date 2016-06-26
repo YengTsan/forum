@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626092937) do
+ActiveRecord::Schema.define(version: 20160626143157) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -22,9 +22,13 @@ ActiveRecord::Schema.define(version: 20160626092937) do
   create_table "comments", force: :cascade do |t|
     t.text     "content"
     t.integer  "topic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
   create_table "topic_category_ships", force: :cascade do |t|
@@ -38,9 +42,13 @@ ActiveRecord::Schema.define(version: 20160626092937) do
     t.string   "name"
     t.text     "content"
     t.integer  "view_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
