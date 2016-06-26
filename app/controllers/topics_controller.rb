@@ -1,5 +1,7 @@
 class TopicsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     case params[ :order ]
     when "last_time"

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_topic
+  before_action :authenticate_user!, :except => [:index, :show]
 
   def create
     @comment = @topic.comments.new( comment_params )
