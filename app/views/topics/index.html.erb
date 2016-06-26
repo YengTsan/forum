@@ -33,6 +33,19 @@
           </td>
           <td>
             <%= link_to "Delete", topic_path(topic), :method => "delete", :class => "btn btn-default" %>
+            <% if current_user %>
+              <% unless current_user.had_liked_topic?( topic ) %>
+                <%= link_to "Like", topic_liked_index_path( topic ), :method => "post" , :class => "btn btn-primary" %>
+              <% else %>
+
+                <%# 待修正 %>
+
+                <%= link_to "Dislike", topic_liked_path( topic, LikeTopic.where( :user_id => current_user.id, :topic_id => topic.id ).first ), :method => "delete" , :class => "btn btn-primary" %>
+
+                <%# 待修正 %>
+
+              <% end %>
+            <% end %>
           </td>
           <td>
             <%= topic.created_at.to_s.split[0]  %>

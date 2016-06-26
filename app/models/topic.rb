@@ -9,6 +9,9 @@ class Topic < ActiveRecord::Base
   has_many :topic_category_ships
   has_many :categories, :through => :topic_category_ships
 
+  has_many :like_topics, :dependent => :destroy
+  has_many :liked_topics, :through => :like_topics, :source => :topic
+
   belongs_to :user
 
   def self.sorted_by_lasted_updated

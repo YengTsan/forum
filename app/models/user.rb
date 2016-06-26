@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :comments
 
+  has_many :like_topics, :dependent => :destroy
+  has_many :liked_topics, :through => :like_topics, :source => :topic
+
+
   def self.from_omniauth(auth)
      # Case 1: Find existing user by facebook uid
      user = User.find_by_fb_uid( auth.uid )
@@ -44,6 +48,10 @@ class User < ActiveRecord::Base
      #user.fb_raw_data = auth
      user.save!
      return user
+   end
+
+   def had_liked_topic?(topic)
+     self.liked_topic_ids.include?( topic.id )
    end
 
 end
