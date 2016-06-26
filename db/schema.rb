@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626061722) do
+ActiveRecord::Schema.define(version: 20160626092937) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -62,9 +62,12 @@ ActiveRecord::Schema.define(version: 20160626061722) do
     t.string   "head_shot_content_type"
     t.integer  "head_shot_file_size"
     t.datetime "head_shot_updated_at"
+    t.string   "fb_uid"
+    t.string   "fb_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["fb_uid"], name: "index_users_on_fb_uid"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

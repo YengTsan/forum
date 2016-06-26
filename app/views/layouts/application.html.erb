@@ -25,7 +25,8 @@
 
     <% else %>
       <%= link_to '登入', new_session_path(:user), :class => "btn btn-default pull-right nav-btn" %>
-      <%= link_to '註冊', new_registration_path(:user), :class => "btn btn-success pull-right nav-btn" %> 
+      <%= link_to '註冊', new_registration_path(:user), :class => "btn btn-success pull-right nav-btn" %>
+      <%= link_to "Facebook登入", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary pull-right" %>
     <% end %>
   </div>
 
