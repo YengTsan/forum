@@ -31,6 +31,12 @@ class TopicsController < ApplicationController
     @comment = Comment.new # 可以在這個頁面直接創造一個新的comment
   end
 
+  def destroy
+    @topic = Topic.find ( params[:id] )
+    @topic.delete
+    redirect_to :back
+  end
+
   def about
   end
 

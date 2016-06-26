@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
 
   end
 
+
   protected
 
   def set_topic
