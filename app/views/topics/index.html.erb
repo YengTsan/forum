@@ -40,7 +40,7 @@
 
                 <%# 待修正 %>
 
-                <%= link_to "Dislike", topic_liked_path( topic, LikeTopic.where( :user_id => current_user.id, :topic_id => topic.id ).first ), :method => "delete" , :class => "btn btn-primary" %>
+                <%= link_to "Unlike", topic_liked_path( topic, LikeTopic.where( :user_id => current_user.id, :topic_id => topic.id ).first ), :method => "delete" , :class => "btn btn-primary" %>
 
                 <%# 待修正 %>
 
