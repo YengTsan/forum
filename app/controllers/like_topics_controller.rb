@@ -16,6 +16,12 @@ class LikeTopicsController < ApplicationController
     redirect_to :back
   end
 
+  def unlike
+    LikeTopic.where( :user => current_user, :topic_id => params[:topic_id] ).first.destroy
+
+    redirect_to :back
+  end
+
   protected
 
   def set_topic

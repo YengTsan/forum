@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   resources :topics do
     resources :comments
-    resources :liked, :controller => :like_topics
+    resources :liked, :controller => :like_topics do
+    
+      collection do
+        post 'unlike'
+      end
+
+    end
 
     collection do
       get 'about'
