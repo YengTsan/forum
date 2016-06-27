@@ -1,4 +1,6 @@
 
+
+<% if @topics.exists? %>
   <h1>
     Topic Content
   </h1>
@@ -30,9 +32,12 @@
     </table>
   
   <% end %>
+<% end %>
+
+<% if @comments.exists? %>
 
   <h1>
-    
+    Comments
   </h1>
 
   <table class="table">
@@ -57,5 +62,25 @@
       </tr>
     <% end %>
   </table>
+<% end %>
+
+
+<% unless @likes_topics.nil? %>
+
+  <h1>
+    <%= current_user.name %> had liked
+  </h1>
+
+  <table class="table">
+    <tr>
+      <td>
+        <% @likes_topics.each do |topic| %>
+          <span class="label label-success id-link" ><%= link_to topic.name, topic_path(topic) %></span>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
 
 

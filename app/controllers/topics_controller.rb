@@ -46,6 +46,7 @@ class TopicsController < ApplicationController
   def user_profile
     @topics = current_user.topics
     @comments = current_user.comments
+    @likes_topics = LikeTopic.where( :user => current_user ).map {|l| l.topic} # find the names of the topics liked by current_user
   end
 
   protected
