@@ -29,6 +29,14 @@
         <% end %>
       </td>
     </tr>
+    <tr>
+      <th>
+         Who also liked the topics
+        <% @liked_users.each do |u| %>
+          <span class="label label-primary" ><%= u.name %></span>
+        <% end %>
+      </th>
+    </tr>
   </table>
 
   <h1>

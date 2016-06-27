@@ -31,6 +31,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find( params[:id] )
     @comments = Comment.find_comments_by_topic_id( params[:id] ) # 可以撈到這篇文章所有comments
     @comment = Comment.new # 可以在這個頁面直接創造一個新的comment
+    @liked_users = LikeTopic.where( :topic_id => @topic ).map {|i| i.user}
   end
 
   def destroy
