@@ -1,0 +1,13 @@
+
+<% if current_user %>
+  <% unless current_user.had_liked_topic?(topic) %>
+    <%= link_to "Like", topic_liked_index_path(topic), :method => "post", :class => "btn btn-primary", :remote => true %>
+    <span class="badge"><%= topic.like_topics.count %></span>
+  <% else %>
+    <%= link_to "Unlike", unlike_topic_liked_index_path(topic), :method => "post", :class => "btn btn-primary", :remote => true %>
+    <span class="badge"><%= topic.like_topics.count %></span>
+  <% end %>
+  <% if current_user.can_edit?(topic) %>
+    <%= link_to "Delete", topic_path(topic), :method => "delete", :class => "btn btn-default" %>
+  <% end %>
+<% end %>

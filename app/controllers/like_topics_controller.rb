@@ -4,22 +4,20 @@ class LikeTopicsController < ApplicationController
   before_action :set_topic
 
   def create
-    LikeTopic.create!( :topic => @topic, :user => current_user )
+    
+    @like = @topic.like_topics.where( :user => current_user )
+    LikeTopic.create!( :topic => @topic, :user => current_user ) unless @like.exists?
 
-    redirect_to :back
-  end
+    render "reload"
 
-  def destroy
-    like = LikeTopic.find( params[:id] )
-    like.destroy
-
-    redirect_to :back
   end
 
   def unlike
-    LikeTopic.where( :user => current_user, :topic_id => params[:topic_id] ).first.destroy
+    @like =  LikeTopic.where( :user => current_user, :topic_id => params[:topic_id] ).first
+    @like.destroy
 
-    redirect_to :back
+    render "reload"
+
   end
 
   protected
