@@ -16,6 +16,12 @@ class CommentsController < ApplicationController
 
   end
 
+  def destroy
+    @comment = Comment.find( params[:id] )
+    @comment.destroy if current_user.can_edit?(@comment)
+    redirect_to :back
+  end
+
 
   protected
 

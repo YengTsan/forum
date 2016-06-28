@@ -54,6 +54,11 @@
               <%= image_tag( comment.pic(:thumb) ) %>
             <% end %>
           </td>
+          <% if current_user.can_edit?(comment) %>
+            <td>
+              <%= link_to "Delete", topic_comment_path( @topic, comment ), :method => :delete, :class => "btn btn-danger pull-right" %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </table>
