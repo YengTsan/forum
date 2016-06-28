@@ -46,7 +46,7 @@
   <% if @comments %> 
     <table class="table">
       <% @comments.each do |comment| %> 
-        <tr>
+        <tr id="comment-<%= comment.id %>">
           <td>
             <%= comment.content %>
             <br>
@@ -56,7 +56,7 @@
           </td>
           <% if current_user.can_edit?(comment) %>
             <td>
-              <%= link_to "Delete", topic_comment_path( @topic, comment ), :method => :delete, :class => "btn btn-danger pull-right" %>
+              <%= link_to "Delete", topic_comment_path( @topic, comment ), :method => :delete, :class => "btn btn-danger pull-right", :remote => true %>
             </td>
           <% end %>
         </tr>
@@ -74,7 +74,6 @@
     <div class="form-group">
       <%= f.label :pic, "圖片" %>
       <%= f.file_field :pic %>
-
     </div>
 
       <%= f.submit "Create", :class => "btn btn-default" %>

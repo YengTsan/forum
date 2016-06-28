@@ -19,7 +19,12 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find( params[:id] )
     @comment.destroy if current_user.can_edit?(@comment)
-    redirect_to :back
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
+
   end
 
 
