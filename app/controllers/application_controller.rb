@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def current_user
+    return super if super
+    User.new( :name => "Guest")
+  end
+
   protected
 
   def configure_permitted_parameters

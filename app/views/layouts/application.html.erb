@@ -15,7 +15,7 @@
     <% if current_user %>
       <%= link_to current_user.name + "'s profile", user_profile_topics_path, :class => "btn btn-default" %>
     <% end %>
-    <% if current_user %>
+    <% if current_user && current_user.name != "Guest" %>
       <%= link_to '修改資料', edit_registration_path(:user), :class => "btn btn-default pull-right nav-btn" %>
       <%= link_to '登出', destroy_user_session_path, :method => :delete, :class => "btn btn-danger pull-right nav-btn" %> 
       <%= link_to 'Hi! ' + current_user.name, user_profile_topics_path, :class => "pull-right hello-user" %>
