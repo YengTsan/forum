@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :like_topics, :dependent => :destroy
   has_many :liked_topics, :through => :like_topics, :source => :topic
 
+  has_many :subscribings, :dependent => :destroy
+  has_many :subscribed_topics, :through => :subscribings, :source => :topic
+
 
   def self.from_omniauth(auth)
     # Case 1: Find existing user by facebook uid
@@ -56,6 +59,10 @@ class User < ActiveRecord::Base
 
   def can_edit?(content)
     self.id == content.user_id
+  end
+
+  def subscribed?(topic)
+    self.subscribed_topic_ids.include?(topic.id)
   end
 
 end

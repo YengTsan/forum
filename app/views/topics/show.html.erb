@@ -1,6 +1,7 @@
 <div class="container">
   <h1>
-    Topic Content
+    Topic
+    <span id="topic-subscription"><%= render :partial => "subscriptions/subscribe", :locals => { :topic => @topic } %></span>
   </h1>
 
   <table class="table">

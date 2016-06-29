@@ -1,0 +1,7 @@
+<% if current_user.name == "Guest" %>
+  <%= link_to "Subscirbe", new_user_session_path, :method => :post, :class =>"btn btn-success pull-right" %>
+<% elsif current_user.subscribed?(topic) %>
+  <%= link_to "Unsubscirbe", unsubscribe_topic_subscriptions_path(topic), :method => :post, :class =>"btn btn-success pull-right", :remote => true %>
+<% else %>
+  <%= link_to "Subscirbe", subscribe_topic_subscriptions_path(topic), :method => :post, :class =>"btn btn-success pull-right", :remote => true %>
+<% end %>

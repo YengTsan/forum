@@ -7,7 +7,14 @@ Rails.application.routes.draw do
       collection do
         post 'unlike'
       end
+    end
 
+    resources :subscriptions do
+
+      collection do
+        post 'subscribe'
+        post 'unsubscribe'
+      end
     end
 
     collection do

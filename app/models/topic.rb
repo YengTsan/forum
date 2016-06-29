@@ -6,6 +6,7 @@ class Topic < ActiveRecord::Base
   validates :name, :content, presence: true
 
   has_many :comments, :dependent => :destroy
+
   has_many :topic_category_ships
   has_many :categories, :through => :topic_category_ships
 
@@ -13,6 +14,9 @@ class Topic < ActiveRecord::Base
   has_many :liked_topics, :through => :like_topics, :source => :topic
 
   belongs_to :user
+
+  has_many :subscribings, :dependent => :destroy
+  has_many :subscribed_users, :through => :subscribings, :source => :user
 
   def self.sorted_by_lasted_updated
     @topics = Topic.all.sort_by { |t| t.comments.exists? ? t.comments.last.updated_at : t.updated_at }
