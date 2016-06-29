@@ -32,7 +32,7 @@
             <%= link_to topic.name, topic_path(topic), :class => "btn btn-default" %>
           </td>
           <td id="like-td-<%=topic.id%>">
-            <%= render :partial => "like_topics/like", :locals => { :topic => topic }, :remot => true %>
+            <%= render :partial => "like_topics/like", :locals => { :topic => topic } %>
           </td>
           <td>
             <%= topic.created_at.to_s.split[0]  %>
