@@ -53,12 +53,12 @@ class User < ActiveRecord::Base
     return user
   end
 
-  def had_liked_topic?(topic)
-    self.liked_topic_ids.include?( topic.id )
-  end
-
   def can_edit?(content)
     self.id == content.user_id
+  end
+
+  def had_liked_topic?(topic)
+    self.liked_topic_ids.include?( topic.id )
   end
 
   def subscribed?(topic)
