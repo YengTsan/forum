@@ -14,82 +14,82 @@
 ActiveRecord::Schema.define(version: 20160629090153) do
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "topic_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "user_id"
-    t.string   "pic_file_name"
-    t.string   "pic_content_type"
-    t.integer  "pic_file_size"
+    t.text     "content",          limit: 65535
+    t.integer  "topic_id",         limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "user_id",          limit: 4
+    t.string   "pic_file_name",    limit: 255
+    t.string   "pic_content_type", limit: 255
+    t.integer  "pic_file_size",    limit: 4
     t.datetime "pic_updated_at"
   end
 
   create_table "like_topics", force: :cascade do |t|
-    t.integer  "topic_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "topic_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "subscribings", force: :cascade do |t|
-    t.integer  "topic_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "topic_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "topic_category_ships", force: :cascade do |t|
-    t.integer  "topic_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "topic_id",    limit: 4
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string   "name"
-    t.text     "content"
-    t.integer  "view_count"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "user_id"
-    t.string   "pic_file_name"
-    t.string   "pic_content_type"
-    t.integer  "pic_file_size"
+    t.string   "name",             limit: 255
+    t.text     "content",          limit: 65535
+    t.integer  "view_count",       limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "user_id",          limit: 4
+    t.string   "pic_file_name",    limit: 255
+    t.string   "pic_content_type", limit: 255
+    t.integer  "pic_file_size",    limit: 4
     t.datetime "pic_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "name"
-    t.text     "bio"
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255,   default: "", null: false
+    t.string   "encrypted_password",     limit: 255,   default: "", null: false
+    t.string   "name",                   limit: 255
+    t.text     "bio",                    limit: 65535
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "head_shot_file_name"
-    t.string   "head_shot_content_type"
-    t.integer  "head_shot_file_size"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "head_shot_file_name",    limit: 255
+    t.string   "head_shot_content_type", limit: 255
+    t.integer  "head_shot_file_size",    limit: 4
     t.datetime "head_shot_updated_at"
-    t.string   "fb_uid"
-    t.string   "fb_token"
+    t.string   "fb_uid",                 limit: 255
+    t.string   "fb_token",               limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["fb_uid"], name: "index_users_on_fb_uid"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["fb_uid"], name: "index_users_on_fb_uid", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
