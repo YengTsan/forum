@@ -23,7 +23,7 @@
     </tr>
     <tr>
       <td>
-        <%= @topic.content %>
+        <%=h @topic.content.html_safe %>
         <br>
         <% if @topic.pic.exists? %>
           <%= image_tag( @topic.pic(:thumb) ) %>
