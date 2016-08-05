@@ -1,28 +1,15 @@
-== README
+== AlphaCamp 第二個小專案
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* 使用者可以註冊、登入 (使用 Devise gem)
+* 使用者可以張貼主題
+* 使用者可以瀏覽主題，並且可在該主題做回覆
+* 使用者可以做文章排序
+* 張貼文章時，可以選擇分類(多選)
+* 使用 Bootstrap 樣式
 
-Things you may want to cover:
+== 我的學習
 
-* Ruby version
+* 透過ORM建立關聯式資料庫
+* 學著熟悉MVC架構（Model、Controller、Model、Helper之間的定位）
+* 使用更多的gem（Devise、Boostrap、Kaminari、Bootsy...）
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
